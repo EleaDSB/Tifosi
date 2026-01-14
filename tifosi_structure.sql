@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 14 jan. 2026 à 10:24
+-- Généré le : mer. 14 jan. 2026 à 13:11
 -- Version du serveur : 8.0.44
 -- Version de PHP : 8.3.28
 
@@ -27,11 +27,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `achete`
 --
 
+DROP TABLE IF EXISTS `achete`;
 CREATE TABLE `achete` (
   `id_client` int NOT NULL,
   `id_focaccia` int NOT NULL,
   `jour` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -39,11 +40,12 @@ CREATE TABLE `achete` (
 -- Structure de la table `boisson`
 --
 
+DROP TABLE IF EXISTS `boisson`;
 CREATE TABLE `boisson` (
   `id_boisson` int NOT NULL,
-  `nom_boisson` varchar(45) NOT NULL,
+  `nom_boisson` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_marque` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -51,12 +53,13 @@ CREATE TABLE `boisson` (
 -- Structure de la table `client`
 --
 
+DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `id_client` int NOT NULL,
-  `nom_client` varchar(45) NOT NULL,
+  `nom_client` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `age` int DEFAULT NULL,
   `cp_client` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -64,10 +67,11 @@ CREATE TABLE `client` (
 -- Structure de la table `comprend`
 --
 
+DROP TABLE IF EXISTS `comprend`;
 CREATE TABLE `comprend` (
   `id_focaccia` int NOT NULL,
   `id_ingredient` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -75,10 +79,11 @@ CREATE TABLE `comprend` (
 -- Structure de la table `contient`
 --
 
+DROP TABLE IF EXISTS `contient`;
 CREATE TABLE `contient` (
   `id_menu` int NOT NULL,
   `id_boisson` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -86,10 +91,11 @@ CREATE TABLE `contient` (
 -- Structure de la table `est_constitue`
 --
 
+DROP TABLE IF EXISTS `est_constitue`;
 CREATE TABLE `est_constitue` (
-  `id_focaccia` int NOT NULL,
-  `id_menu` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_menu` int NOT NULL,
+  `id_focaccia` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -97,11 +103,12 @@ CREATE TABLE `est_constitue` (
 -- Structure de la table `focaccia`
 --
 
+DROP TABLE IF EXISTS `focaccia`;
 CREATE TABLE `focaccia` (
   `id_focaccia` int NOT NULL,
-  `nom_focaccia` varchar(45) NOT NULL,
+  `nom_focaccia` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `prix_focaccia` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -109,10 +116,11 @@ CREATE TABLE `focaccia` (
 -- Structure de la table `ingredient`
 --
 
+DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE `ingredient` (
   `id_ingredient` int NOT NULL,
-  `nom_ingredient` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nom_ingredient` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -120,10 +128,11 @@ CREATE TABLE `ingredient` (
 -- Structure de la table `marque`
 --
 
+DROP TABLE IF EXISTS `marque`;
 CREATE TABLE `marque` (
   `id_marque` int NOT NULL,
-  `nom_marque` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nom_marque` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -131,11 +140,12 @@ CREATE TABLE `marque` (
 -- Structure de la table `menu`
 --
 
+DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
   `id_menu` int NOT NULL,
-  `nom_menu` varchar(45) NOT NULL,
+  `nom_menu` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `prix_menu` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -143,11 +153,12 @@ CREATE TABLE `menu` (
 -- Structure de la table `paye`
 --
 
+DROP TABLE IF EXISTS `paye`;
 CREATE TABLE `paye` (
   `id_client` int NOT NULL,
   `id_menu` int NOT NULL,
   `jour` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Index pour les tables déchargées
@@ -191,8 +202,8 @@ ALTER TABLE `contient`
 -- Index pour la table `est_constitue`
 --
 ALTER TABLE `est_constitue`
-  ADD PRIMARY KEY (`id_focaccia`,`id_menu`),
-  ADD KEY `id_menu` (`id_menu`);
+  ADD PRIMARY KEY (`id_menu`,`id_focaccia`),
+  ADD KEY `id_focaccia` (`id_focaccia`);
 
 --
 -- Index pour la table `focaccia`
@@ -300,8 +311,8 @@ ALTER TABLE `contient`
 -- Contraintes pour la table `est_constitue`
 --
 ALTER TABLE `est_constitue`
-  ADD CONSTRAINT `est_constitue_ibfk_1` FOREIGN KEY (`id_focaccia`) REFERENCES `focaccia` (`id_focaccia`),
-  ADD CONSTRAINT `est_constitue_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
+  ADD CONSTRAINT `est_constitue_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`),
+  ADD CONSTRAINT `est_constitue_ibfk_2` FOREIGN KEY (`id_focaccia`) REFERENCES `focaccia` (`id_focaccia`);
 
 --
 -- Contraintes pour la table `paye`
